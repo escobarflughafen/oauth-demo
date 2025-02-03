@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Email Subjects - AI Email Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="chat-container">
+        <div class="chat-box">
+            <div class="message bot">
+                <p>Here are the subjects of your latest emails:</p>
+            </div>
+            {% if subjects %}
+            <div class="message user">
+                <ul>
+                    {% for subject in subjects %}
+                    <li>{{ subject }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% else %}
+            <div class="message bot">
+                <p>No emails found.</p>
+            </div>
+            {% endif %}
+            <div class="message bot">
+                <button onclick="location.href='/'">🔙 Back to Home</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

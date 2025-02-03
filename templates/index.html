@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AI Email Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="chat-container">
+        <div class="chat-box">
+            <div class="message bot">
+                <p>👋 Hello! I'm your AI Email Assistant.</p>
+            </div>
+            {% if logged_in %}
+            <div class="message bot">
+                <p>✅ You have granted me access to manage your emails.</p>
+            </div>
+            <div class="message bot">
+                <p>How can I help you today?</p>
+                <button onclick="location.href='/list-emails'">📜 View Email Subjects</button>
+                <button onclick="location.href='/send-email'">✉️ Compose Email</button>
+                <button onclick="location.href='/logout'">🔒 Revoke Access</button>
+            </div>
+            {% else %}
+            <div class="message bot">
+                <p>🔐 To help you manage your emails, I need permission to access your Gmail inbox.</p>
+            </div>
+            <div class="message bot">
+                <button onclick="location.href='/login'">🔗 Connect to Gmail</button>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>
